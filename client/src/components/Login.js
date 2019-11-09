@@ -15,7 +15,7 @@ const Login = props => {
   }
 
   const handleLogin = event => {
-    event.preventDefault();
+    event.preventDefault()
 
     axiosWithAuth()
       .post('/api/login', credentials)
@@ -29,19 +29,21 @@ const Login = props => {
   }
 
   return (
+
   <div>
 
-  <h1>Login</h1>
+    <h1>Login to see yr bubbles</h1>
 
-  <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin}>
 
-    <input type='text' name='username' placeholder='username' onChange={handleChange} />
-    <input type='password' name='password' placeholder='password' onChange={handleChange} />
-    <button type='submit'>Log In</button>
+        <input type='text' name='username' placeholder='username' onChange={handleChange} />
+        <input type='password' name='password' placeholder='password' onChange={handleChange} />
+        <button type='submit'>Log In</button>
 
-  </form>
+      </form>
 
-</div>
+  </div>
+
   )
 }
 
