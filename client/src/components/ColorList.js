@@ -24,7 +24,10 @@ const ColorList = ({ colors, updateColors, getColors }) => {
     axiosWithAuth()
     .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
     .then(res =>{
-      getColors()
+      axiosWithAuth()
+      .get('/api/colors')
+      .then(res => updateColors(res.data)
+      )
       setEditing(false)
     })
     .catch(err => {
@@ -36,8 +39,12 @@ const ColorList = ({ colors, updateColors, getColors }) => {
     // make a delete request to delete this color
     axiosWithAuth()
     .delete(`/api/colors/${color.id}`)
-    .then(res => {
-      getColors()
+    .then(res =>{
+      axiosWithAuth()
+      .get('/api/colors')
+      .then(res => updateColors(res.data)
+      )
+      setEditing(false)
     })
     .catch(err => {
       console.log(err)
@@ -99,6 +106,7 @@ const ColorList = ({ colors, updateColors, getColors }) => {
       )}
       <div className='spacer' />
       {/* stretch - build another form here to add a color */}
+      
     </div>
   );
 };
